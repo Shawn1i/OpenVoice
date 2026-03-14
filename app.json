@@ -1,43 +1,44 @@
 {
   "expo": {
-    "name": "OpenVoice",
-    "slug": "openvoice",
+    "name": "OpenVoiceClean",
+    "slug": "OpenVoiceClean",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "backgroundColor": "#FAF8F5"
-    },
+    "icon": "./assets/images/icon.png",
+    "scheme": "openvoiceclean",
+    "userInterfaceStyle": "automatic",
     "ios": {
-      "supportsTablet": false,
-      "infoPlist": {
-        "NSMicrophoneUsageDescription": "OpenVoice needs the microphone to listen to your speech for language learning.",
-        "NSCameraUsageDescription": "OpenVoice uses the camera to identify objects and teach you their English names.",
-        "NSSpeechRecognitionUsageDescription": "OpenVoice transcribes your speech to help you learn English."
-      }
+      "icon": "./assets/expo.icon"
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#FAF8F5"
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "backgroundImage": "./assets/images/android-icon-background.png",
+        "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "permissions": [
-        "RECORD_AUDIO",
-        "CAMERA"
-      ]
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
       "expo-router",
       [
-        "expo-av",
+        "expo-splash-screen",
         {
-          "microphonePermission": "OpenVoice needs the microphone to listen to your speech."
+          "backgroundColor": "#208AEF",
+          "android": {
+            "image": "./assets/images/splash-icon.png",
+            "imageWidth": 76
+          }
         }
       ]
     ],
     "experiments": {
-      "typedRoutes": true
-    },
-    "scheme": "openvoice"
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
   }
 }
