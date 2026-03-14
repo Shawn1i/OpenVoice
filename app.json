@@ -1,33 +1,43 @@
 {
   "expo": {
     "name": "OpenVoice",
-    "slug": "OpenVoice",
+    "slug": "openvoice",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#FAF8F5"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "OpenVoice needs the microphone to listen to your speech for language learning.",
+        "NSCameraUsageDescription": "OpenVoice uses the camera to identify objects and teach you their English names.",
+        "NSSpeechRecognitionUsageDescription": "OpenVoice transcribes your speech to help you learn English."
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
-        "monochromeImage": "./assets/android-icon-monochrome.png"
+        "backgroundColor": "#FAF8F5"
       },
-      "predictiveBackGestureEnabled": false
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
+      "permissions": [
+        "RECORD_AUDIO",
+        "CAMERA"
+      ]
     },
     "plugins": [
-      "expo-router"
-    ]
+      "expo-router",
+      [
+        "expo-av",
+        {
+          "microphonePermission": "OpenVoice needs the microphone to listen to your speech."
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "scheme": "openvoice"
   }
 }
