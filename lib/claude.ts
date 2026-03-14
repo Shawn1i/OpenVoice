@@ -1,6 +1,10 @@
 const CLAUDE_API_URL = "https://api.anthropic.com/v1/messages";
 const MODEL = "claude-sonnet-4-20250514";
 
+// IMPORTANT: In production, route through your backend — never ship API keys in client code.
+// For hackathon demo, set this via environment or replace with your key.
+const API_KEY = process.env.EXPO_PUBLIC_ANTHROPIC_API_KEY ?? "";
+
 export type ScenarioType = "doctor" | "work" | "school" | "store" | "free";
 
 const SCENARIO_CONTEXTS: Record<ScenarioType, string> = {
@@ -51,7 +55,11 @@ Respond ONLY in this exact JSON format with no extra text:
 
   const response = await fetch(CLAUDE_API_URL, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": API_KEY,
+      "anthropic-version": "2023-06-01",
+    },
     body: JSON.stringify({
       model: MODEL,
       max_tokens: 1000,
@@ -97,7 +105,11 @@ Respond ONLY in this JSON format:
 
   const response = await fetch(CLAUDE_API_URL, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": API_KEY,
+      "anthropic-version": "2023-06-01",
+    },
     body: JSON.stringify({
       model: MODEL,
       max_tokens: 1000,
